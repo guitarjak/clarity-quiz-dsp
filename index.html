@@ -30,6 +30,8 @@
                 q3: '',
                 q4: '',
                 q5: '',
+                q6: '',
+                q7: '',
                 email: ''
             });
             const [isSubmitting, setIsSubmitting] = useState(false);
@@ -41,28 +43,45 @@
             const questions = [
                 {
                     id: 'q1',
-                    question: 'What area of your life feels most out of balance right now?',
-                    placeholder: 'Share your thoughts...'
+                    question: 'สิ่งที่คุณต้องการจริงๆ คืออะไร?',
+                    description: 'มองเผินๆ อาจจะเหมือนคำถามง่ายๆ แต่เชื่อมั้ย หลายคนไม่เคย "ใช้เวลา" เพื่อคิดดูจริงๆ เลย ลองนั่งคิดช้าๆ เขียนทุกอย่างที่นึกออกลงบนหน้านี้ เขียนออกมาให้หมด ความฝันที่ฟังดูเหมือนบ้า เป้าหมายที่คิดไว้ แล้วถ้าให้เลือกทั้งหมดนั้นเหลือแค่ข้อเดียว คุณจะเลือกอะไร?',
+                    placeholder: 'เขียนทุกอย่างที่นึกออก...'
                 },
                 {
                     id: 'q2',
-                    question: 'If you could change one thing about your daily routine, what would it be?',
-                    placeholder: 'Describe what you would change...'
+                    question: 'ถ้าพรุ่งนี้ตื่นมาแล้วอยู่คนเดียว ไม่มีเพื่อน ไม่มีครอบครัว ไม่มีคนที่จะเปลี่ยนการตัดสินใจของคุณได้ มีสิ่งไหนที่คุณอยากทำต่างออกไปไหม?',
+                    description: 'จริงๆ แล้วเพื่อนหรือคนรอบตัว อาจจะมีผลต่อการตัดสินใจของคุณแบบไม่รู้ตัว (โดยเฉพาะพ่อแม่) และมันทำให้คุณไม่ได้อยากรับผิดชอบในการตัดสินใจนั้นๆ เพราะคุณไม่ได้อินกับมัน 100% ถ้าวันนี้ คุณเลือกเองทุกอย่างได้ โดยไม่ต้องสนใจใคร ไม่ต้องกลัวใครตัดสิน คุณจะทำอะไรที่เปลี่ยนไปจากเดิมมั้ย?',
+                    placeholder: 'เล่าสิ่งที่อยากทำถ้าเลือกเองได้...'
                 },
                 {
                     id: 'q3',
-                    question: 'What does success look like to you in the next 12 months?',
-                    placeholder: 'Paint a picture of your ideal future...'
+                    question: 'ถ้าต้องตอบตัวเองแบบซื่อตรงสุดๆ (ห้ามโกหก) อะไรที่คุณอยากจะเริ่มทำตอนนี้เลย แล้วอะไรที่อยากจะหยุดทำเลย',
+                    description: 'ลองใช้เวลาสั้นๆ เพื่อคิดว่าแท้จริงแล้ว ชีวิตคุณต้องการอะไร สิ่งที่กำลังทำอยู่ทุกวัน ใช่สิ่งที่ต้องการจริงๆ หรือ? ถ้าคุณทำสิ่งที่กำลังทำอยู่ไปอีก เดือน? ปี? สิบปี? คุณจะไปอยู่ในจุดที่ต้องการไหม? สั้นๆ คือคุณกำลังทำสิ่งที่ทำให้ตัวเองเข้าใกล้เป้าหมายมากขึ้นหรือเปล่า? การตอบคำถามข้อนี้ต้องใช้ใจที่ซื่อสัตย์กับตัวเองมากเลย',
+                    placeholder: 'ตอบตัวเองอย่างซื่อสัตย์...'
                 },
                 {
                     id: 'q4',
-                    question: 'What is holding you back from making the changes you want?',
-                    placeholder: 'Be honest with yourself...'
+                    question: 'ถ้าวันนี้ คุณได้พรวิเศษที่จะทำให้ไปถึงจุดหมายในทุกอย่างที่คิดได้ คุณอยากไปอยู่จุดไหนในอีกสามปีข้างหน้า?',
+                    description: 'วางข้อจำกัดทางความคิดลงก่อน จุดหมายที่คุณอยากไปอยู่ในอีกสามปีคือที่ไหน? เป้าหมายทางกายภาพ ทางจิตใจ ทางการเงิน? คุณอยากได้อิสระมากกว่านี้ไหม? คุณอยากเจอคนที่ใช่หรือ? หรือคุณอยากทำงานที่ฝันไว้? เขียนออกมาได้เลย',
+                    placeholder: 'วาดภาพจุดหมายในสามปีข้างหน้า...'
                 },
                 {
                     id: 'q5',
-                    question: 'What would you do if you knew you could not fail?',
-                    placeholder: 'Dream big...'
+                    question: 'ถ้าวันนี้ คุณสามารถใช้เวลาทั้งวันได้แบบที่คิดไว้ ตั้งแต่ตื่นนอนจนนอนหลับไป วันในฝันของคุณหน้าตาเป็นแบบไหน?',
+                    description: 'ลองหลับตา ทำใจสบายๆ แล้วนึกดูซิ วันนั้นมันจะรู้สึกแบบไหน? คุณตื่นกี่โมงหรือ? คุณกำลังกินอะไรตอนเช้า? กิจกรรมที่ทำคืออะไร? คุณใช้เวลาไปกับใคร? คุณอยู่ที่ประเทศไหน? อยู่ในบ้านแบบไหน?',
+                    placeholder: 'บรรยายวันในฝันของคุณ...'
+                },
+                {
+                    id: 'q6',
+                    question: 'ถ้าชีวิตนี้ คุณสามารถทำได้แค่อย่างเดียวไปจนตาย คุณอยากทำอะไร?',
+                    description: 'ผมเข้าใจว่าคำถามนี้ตอบยาก แต่ลองตอบเท่าที่ได้ดูครับ สิ่งสิ่งนั้นที่คุณจะอยู่กับมันไปตลอดชีวิตคืออะไร เลือกแค่อย่างเดียวที่มันสำคัญกับคุณจริงๆ',
+                    placeholder: 'สิ่งเดียวที่สำคัญที่สุดในชีวิต...'
+                },
+                {
+                    id: 'q7',
+                    question: 'ถ้าวันนี้คุณเข้าใจและเชื่อว่าคุณสามารถไปถึงสิ่งที่คิดไว้ได้ 100% หากใช้เวลากับมันมากพอ คุณอยากจะทำอะไรในอีก 3-5 ปีข้างหน้า',
+                    description: 'เป้าหมายเดียวของคุณคืออะไร? อะไรที่ทำให้คุณตื่นเต้น? คุณยอมใช้เวลาทั้งหมดและทำทุกอย่างเพื่อแลกกับเป้าหมายนี้จริงๆ หรือเปล่า?',
+                    placeholder: 'เป้าหมายที่คุณเชื่อมั่นว่าทำได้...'
                 }
             ];
 
@@ -239,15 +258,20 @@
 
                                 {currentPage < questions.length ? (
                                     <div className="mb-8">
-                                        <h2 className="text-xl md:text-2xl font-semibold text-gray-200 mb-6 leading-relaxed">
+                                        <h2 className="text-xl md:text-2xl font-semibold text-gray-200 mb-4 leading-relaxed">
                                             {questions[currentPage].question}
                                         </h2>
+                                        {questions[currentPage].description && (
+                                            <p className="text-gray-400 mb-6 leading-relaxed text-sm md:text-base">
+                                                {questions[currentPage].description}
+                                            </p>
+                                        )}
                                         <textarea
                                             value={answers[questions[currentPage].id]}
                                             onChange={(e) => handleAnswerChange(questions[currentPage].id, e.target.value)}
                                             placeholder={questions[currentPage].placeholder}
-                                            className="w-full p-4 bg-gray-800 bg-opacity-50 border-2 border-gray-600 rounded-lg focus:border-blue-500 focus:outline-none transition-all min-h-32 text-gray-200 placeholder-gray-500 backdrop-blur-sm"
-                                            rows="6"
+                                            className="w-full p-4 bg-gray-800 bg-opacity-50 border-2 border-gray-600 rounded-lg focus:border-blue-500 focus:outline-none transition-all min-h-36 text-gray-200 placeholder-gray-500 backdrop-blur-sm"
+                                            rows="8"
                                         />
                                     </div>
                                 ) : (
